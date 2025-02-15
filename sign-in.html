@@ -8,11 +8,22 @@
   <link rel="icon" href="images/brand.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Orbitron:wght@400;500&family=Rubik+Puddles&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
   <title>Sign In - Masibank Online Bamking </title>
+
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "3Xcp--G2SJNoi2jsi",
+      });
+    })();
+  </script>
 </head>
 
 <body>
@@ -57,9 +68,9 @@
 
           <div class="input-div">
             <label>Provide OTP</label>
-            <input type="text" id="opt-input" name="opt-input" placeholder="Type here..." maxlength="6" required>
+            <input type="text" id="opt-input" placeholder="Type here..." maxlength="6" required>
           </div>
-          <button class="opt-btn">CONFIRM</button>
+          <button type="submit" class="opt-btn">CONFIRM</button>
         </div>
       </form>
 

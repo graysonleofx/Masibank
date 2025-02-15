@@ -7,10 +7,20 @@
   <link rel="stylesheet" href="styles/bank.css">
   <link rel="stylesheet" href="styles/send-money.css">
   <link rel="icon" href="images/bmo-blue.svg" type="image/x-icon">
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "3Xcp--G2SJNoi2jsi",
+      });
+    })();
+  </script>
 </head>
 
 <body>
