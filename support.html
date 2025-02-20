@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/contact.css">
   <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/loader.css">
   <link rel="icon" href="images/brand.jpg" type="image/x-icon">
   <title>Get Support - Masibank Online Banking </title>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 
 <body>
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  
   <header>
     <div class="heading">
       <!-- <div class="logo">MBF</div> -->
@@ -56,5 +64,13 @@
   </main>
 
   <script src="scripts/contact.js"></script>
+
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    })
+  </script>
 </body>
 </html>

@@ -8,9 +8,11 @@
   <link rel="icon" href="images/brand.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Orbitron:wght@400;500&family=Rubik+Puddles&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/loader.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  
   <title>Sign In - Masibank Online Bamking </title>
 
 
@@ -27,6 +29,13 @@
 </head>
 
 <body>
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
   <div class="header">
     <img src="images/brand.jpg" alt="" width="100px">
     <!-- <div class="logo">MBF</div> -->
@@ -86,5 +95,12 @@
     </div>
   </main>
   <script type="module" src="scripts/sign-in.js"></script>
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    })
+  </script>
 </body>
 </html>

@@ -8,9 +8,18 @@
   <link rel="icon" href="images/brand.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Orbitron:wght@400;500&family=Rubik+Puddles&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/loader.css">
   <title>Sign Up - Masibank Online Banking</title>
 </head>
 <body>
+
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
   <div class="header">
     <img src="images/brand.jpg" alt="" width="100px">
     <h2>Welcome!</h2>
@@ -72,5 +81,12 @@
   </main>
 
   <script src="scripts/sign-up.js"></script>
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    })
+  </script>
 </body>
 </html>

@@ -8,9 +8,17 @@
   <link rel="icon" href="images/brand.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Orbitron:wght@400;500&family=Rubik+Puddles&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/loader.css">
   <title>MasiBank Online Banking - Home</title>
 </head>
 <body>
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
   <header>
     <div class="heading">
       <!-- <div class="logo">MBF</div> -->
@@ -167,5 +175,13 @@
   </footer>
 
   <script src="scripts/index.js"></script>
+
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    })
+  </script>
 </body>
 </html>
