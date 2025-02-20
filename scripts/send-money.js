@@ -265,54 +265,49 @@ function sendOTP() {
   const OTPDiv = document.getElementById('send-otp-div');
   let otpInp = document.getElementById('otp-input');
   const otpBtn = document.querySelector('#otp-btn');
+  const serviceID = 'service_kwwsd5c';
+  const templateID = 'template_dgocp4a';
 
   // Generate an OTP 
   let otp = Math.floor(Math.random() * 1000000);
   // console.log(otp)
 
-  let emailBody = `
-    <img src="images/bmo-blue.svg" width="100px"/>
-  <h1> Confirm Transation form BMO Online Banking and Finance</h2>
-  <h2> Your OTP is </h2>
-  <h3>${otp}</h3>
-  `;
-  Email.send({
-    SecureToken : "d2640e04-1651-4372-b5db-eeac16179d0a",
-    To : emailInput,
-    From : "leograyson1969@gmail.com",
-    Subject : "This is from BMO Online Banking and Finance",
-    Body : emailBody
-  }).then(
-    message => {
-      if(message === 'OK'){
-        send.style.display = "none";
-        local.style.display = "block";
-        international.style.display = "none";
+  let templateParam = {
+    from_name: 'MB Finance Online Banking',
+    otp: otp,
+    nessage: 'Please Confirm your OTP to process payment',
+    reply_to: emailInput
+  }
 
-        inputDiv.style.display = "none"
-        internationalDiv.style.display = "none"
-        amountDiv.style.display = "none";
-        interAmountDiv.style.display = "none";
-        comfrimDiv.style.display = "none";
-        OTPDiv.style.display = "grid";
-        sendLocal.style.display = "none";
-        sendInternation.style.display = "none";
-        console.log('ok')
+  emailjs.send(serviceID, templateID, templateParam).then((res) =>{
+    console.log(res);
+    send.style.display = "none";
+    local.style.display = "block";
+    international.style.display = "none";
 
+    inputDiv.style.display = "none"
+    internationalDiv.style.display = "none"
+    amountDiv.style.display = "none";
+    interAmountDiv.style.display = "none";
+    comfrimDiv.style.display = "none";
+    OTPDiv.style.display = "grid";
+    sendLocal.style.display = "none";
+    sendInternation.style.display = "none";
+    console.log('ok')
 
-        otpBtn.addEventListener('click', (e)=>{
-          e.preventDefault()
-          if(otpInp.value == otp){
-            // alert('Email address verified...');
-            const userId = localStorage.getItem("userId");
-            sendMoney(userId);
-          }else{
-            alert('Enter correct otp')
-          }
-        })
+    otpBtn.addEventListener('click', (e)=>{
+      e.preventDefault()
+      if(otpInp.value == otp){
+        // alert('Email address verified...');
+        const userId = localStorage.getItem("userId");
+        sendMoney(userId);
+      }else{
+        alert('Enter correct otp')
       }
-    }
-  );
+    })
+  },  error => {
+    console.log(error)
+  });
 }
 
 // showing the not successful message details and function 
@@ -338,6 +333,7 @@ function displayNotSuccessful(){
   sendLocal.style.display = "none";
   sendInternation.style.display = "none";
 }
+
 // showing the successful message details and function 
 function displaySuccessful(){
   const OTPDiv = document.getElementById('send-otp-div');
@@ -361,6 +357,7 @@ function displaySuccessful(){
   sendLocal.style.display = "none";
   sendInternation.style.display = "none";
 }
+
 document.getElementById('successful-btn').addEventListener('click', () => {
   console.log("clicked");
   window.location.replace("my_account.html");
@@ -506,53 +503,50 @@ function interSendOTP() {
   const OTPDiv = document.getElementById('send-otp-div');
   let otpInp = document.getElementById('otp-input');
   const otpBtn = document.querySelector('#otp-btn');
+  const serviceID = 'service_kwwsd5c';
+  const templateID = 'template_dgocp4a';
 
   // Generate an OTP 
   let otp = Math.floor(Math.random() * 1000000);
 
-  let emailBody = `
-  <h1> Confirm Transation for BMO Online Banking and Finance</h2>
-  <h2> Your OTP is </h2>
-  <h3>${otp}</h3>
-  `;
-  Email.send({
-    SecureToken : "d2640e04-1651-4372-b5db-eeac16179d0a",
-    To : emailInput,
-    From : "leograyson1969@gmail.com",
-    Subject: "This is from BMO Online Banking and Finance",
-    Body : emailBody
-  }).then(
-    message => {
-      if(message === 'OK'){
-        send.style.display = "none";
-        local.style.display = "none";
-        international.style.display = "block";
+  let templateParam = {
+    from_name: 'MB Finance Online Banking',
+    otp: otp,
+    nessage: 'Please Confirm your OTP',
+    reply_to: emailInput
+  }
 
-        inputDiv.style.display = "none"
-        internationalDiv.style.display = "none"
-        amountDiv.style.display = "none";
-        interAmountDiv.style.display = "none";
-        // comfrimDiv.style.display = "none";
-        interConfirmDiv.style.display = "none";
-        OTPDiv.style.display = "grid";
-        sendLocal.style.display = "none";
-        sendInternation.style.display = "none";
-        console.log('ok')
+  emailjs.send(serviceID, templateID, templateParam).then((res) =>{
+    console.log(res);
+    send.style.display = "none";
+    local.style.display = "none";
+    international.style.display = "block";
+
+    inputDiv.style.display = "none"
+    internationalDiv.style.display = "none"
+    amountDiv.style.display = "none";
+    interAmountDiv.style.display = "none";
+    // comfrimDiv.style.display = "none";
+    interConfirmDiv.style.display = "none";
+    OTPDiv.style.display = "grid";
+    sendLocal.style.display = "none";
+    sendInternation.style.display = "none";
+    console.log('ok')
 
 
-        otpBtn.addEventListener('click', (e)=>{
-          e.preventDefault()
-          if(otpInp.value == otp){
-            // alert('Email address verified...');
-            const userId = localStorage.getItem("userId");
-            interSendMoney(userId)
-          }else{
-            alert('Enter correct otp')
-          }
-        })
+    otpBtn.addEventListener('click', (e)=>{
+      e.preventDefault()
+      if(otpInp.value == otp){
+        // alert('Email address verified...');
+        const userId = localStorage.getItem("userId");
+        interSendMoney(userId)
+      }else{
+        alert('Enter correct otp')
       }
-    }
-  );
+    })
+  },  error => {
+    console.log(error)
+  })
 }
 function interSendMoney(userid){
   const amountInp = Number(document.querySelector('.js-amount').value);

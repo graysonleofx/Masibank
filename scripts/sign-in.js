@@ -4,6 +4,7 @@ import { getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebase
 
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";  
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDiPQB-_i4b7WlmGzlZTO5RUVNqdK0nbDU",
   authDomain: "online-bank-97eb2.firebaseapp.com",
@@ -80,7 +81,7 @@ function signIn(password){
         });
         push(userRef, users[userid])
         .then(() => {
-          console.log("User saved successfully!");
+          // console.log("User saved successfully!");
         }).catch((error) => {
           console.error("Error saving user:", error);
         });
@@ -100,48 +101,48 @@ function signIn(password){
   } 
   alert('Email not found');
 }
+
 function sendOTP() {
   // Reference  
   let emailInput = document.getElementById('email').value;
   sessionStorage.setItem("userEmail", emailInput);
   const otpverify = document.getElementsByClassName('otpverify')[0];
-  const mainForm = document.querySelector('.main-form');
-  let otpInp = document.getElementById('opt-input');
   const otpBtn = document.querySelector('.opt-btn');
+  let otpInp = document.getElementById('opt-input');
+  const mainForm = document.querySelector('.main-form');
+  const serviceID = 'service_kwwsd5c';
+  const templateID = 'template_dgocp4a';
 
   // Generate an OTP 
   let otp = Math.floor(Math.random() * 1000000);
+  // console.log(otp)
 
-  let emailBody = `
-  <img src="images/bmo-blue.svg" width="100px"/>
-  <h1> Welcome to BMO Online Banking and Finance</h2>
-  <h2> Your OTP is </h2>
-  <h3>${otp}</h3>
-  `;
-  Email.send({
-    // 994501B42584E496588F63403A45BF3899DB
-    SecureToken : "d2640e04-1651-4372-b5db-eeac16179d0a",
-    To : emailInput,
-    From : "leograyson1969@gmail.com",
-    Subject : "This is from Bmo Online Bamking and Finance",
-    Body : emailBody
-  }).then(
-    message => {
-    if(message === 'OK'){
-      otpverify.style.display = "block";
-      mainForm.style.display = "none";
-      console.log('sent')
-      otpBtn.addEventListener('click', (e)=>{
-        e.preventDefault()
-        // console.log('clicked')
-        if(otpInp.value == otp){
-          // alert('Email address verified...')
-          window.location.href="/my_account.html";
-          window.location.replace("/my_account.html")
-        }
-      })
-    }
-  })
+  let templateParam = {
+    from_name: 'MB Finance Online Banking',
+    otp: otp,
+    nessage: 'Please Confirm your OTP',
+    reply_to: emailInput
+  }
+
+  emailjs.send(serviceID, templateID, templateParam).then((res) =>{
+    console.log(res);
+    otpverify.style.display = "block";
+    mainForm.style.display = "none";
+    console.log('sent');
+    otpBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      console.log('clicked');
+      if(otpInp.value == otp){
+        // alert('Email address verified...');
+        window.location.replace("/my_account.html");
+      }else(
+        alert('Incorrect Otp')
+      )
+    });  
+  }, error => {
+    console.log(error)
+  });
+
 }
 
 // const fgtPwdLink =  document.querySelector('.fgt-pwd');
