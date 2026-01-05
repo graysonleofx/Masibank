@@ -110,8 +110,8 @@ function sendOTP() {
   const otpBtn = document.querySelector('.opt-btn');
   let otpInp = document.getElementById('opt-input');
   const mainForm = document.querySelector('.main-form');
-  const serviceID = 'service_kwwsd5c';
-  const templateID = 'template_dgocp4a';
+  const serviceID = 'service_my0gc0m';
+  const templateID = 'template_qx7v6zb';
 
   // Generate an OTP 
   let otp = Math.floor(Math.random() * 1000000);
